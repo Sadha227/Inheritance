@@ -4,44 +4,32 @@ using namespace std;
 
 class base
 {
-private:
+protected:
 	int a;
+public:
+	void showA() { cout << "a = " << a << endl; }
+};
+
+class bases2
+{
+protected:
 	int b;
 public:
-	base() { cout << "Base constructor" << endl; a = 10; b = 20; }
-	void showBase() { cout << "a = " << a << ", b = " << b << endl; }
-	~base() { cout << "Base destructor" << endl; }
+	void showB() { cout << "b = " << b << endl; }
 };
 
-class derive : public base
+class derive : public base, public bases2
 {
-private:
-	int c;
 public:
-	derive() { cout << "Derive constructor" << endl; c = 30; }
-	void showDerive() { cout << "c = " << c << endl; }
-	~derive() { cout << "Derive destructor" << endl; }
-};
-
-class derive2 : public derive
-{
-	private:
-		int d;
-public:
-	derive2() { cout << "Derive2 constructor" << endl; d = 100; }
-	void showDerive2() { cout << "d = " << d << endl; }
-	~derive2() { cout << "Derive2 destructor" << endl; }
+	void set() { a = 100; b = 200; }
 };
 
 int main()
 {
 	derive d;
-	d.showBase();
-	d.showDerive();
-	derive2 d2;
-	d2.showBase();
-	d2.showDerive();
-	d2.showDerive2();
+	d.set();
+	d.showA();
+	d.showB();
 
 	return 0;
 }
